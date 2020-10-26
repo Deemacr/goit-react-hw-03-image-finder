@@ -55,4 +55,7 @@ export default class Modal extends Component {
 	}
 }
 
-Modal.propTypes = {};
+Modal.propTypes = {
+	largeImageUrl: PropTypes.string.isRequired,
+	onClose: PropTypes.func.isRequired,
+};
