@@ -87,7 +87,6 @@ export default class App extends Component {
 				{pictures.length > 0 && (
 					<ImageGallery
 						pictures={pictures}
-						toggleImg={this.toggleModalImg}
 						onClose={this.toggleModalImg}
 					></ImageGallery>
 				)}

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const StyledOverlay = styled.div`
 	position: fixed;
@@ -53,3 +54,5 @@ export default class Modal extends Component {
 		);
 	}
 }
+
+Modal.propTypes = {};

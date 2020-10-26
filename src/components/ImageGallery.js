@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import ImageGalleryItem from "./ImageGalleryItem";
 
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const StyledImageGallery = styled.ul`
 	display: grid;
@@ -38,3 +39,14 @@ export default class ImageGallery extends Component {
 		);
 	}
 }
+
+ImageGallery.propTypes = {
+	pictures: PropTypes.arrayOf(
+		PropTypes.shape({
+			id: PropTypes.number.isRequired,
+			webformatURL: PropTypes.string,
+			largeImageURL: PropTypes.string,
+		})
+	).isRequired,
+	onClose: PropTypes.func.isRequired,
+};

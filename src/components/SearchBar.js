@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const StyledSearchBar = styled.header`
 	top: 0;
@@ -109,3 +110,5 @@ export default class SearchBar extends Component {
 		);
 	}
 }
+
+SearchBar.propTypes = { onSubmit: PropTypes.func };

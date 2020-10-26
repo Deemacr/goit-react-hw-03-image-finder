@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const StyledLoadMoreButton = styled.button`
 	padding: 8px 16px;
@@ -36,3 +37,5 @@ export default class Button extends Component {
 		);
 	}
 }
+
+Button.propTypes = { onClick: PropTypes.func };

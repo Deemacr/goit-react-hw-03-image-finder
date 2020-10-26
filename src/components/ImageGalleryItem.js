@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 const StyledImageGalleryItem = styled.li`
 	border-radius: 2px;
@@ -32,3 +33,9 @@ const ImageGalleryItem = ({ imageUrl, id, onClick }) => {
 };
 
 export default ImageGalleryItem;
+
+ImageGalleryItem.propTypes = {
+	imageUrl: PropTypes.string,
+	id: PropTypes.number,
+	onClick: PropTypes.func.isRequired,
+};
