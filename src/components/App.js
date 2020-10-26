@@ -17,25 +17,24 @@ const AppStyled = styled.div`
 export default class App extends Component {
 	state = {
 		pictures: [],
-		id: "",
 		isLoading: false,
 		largeImageUrl: "",
 		showModal: false,
 		page: 1,
 		searchQuery: "",
 		error: false,
+		shouldScroll: false,
 	};
 
 	componentDidMount() {}
 
 	componentDidUpdate(prevProps, prevState) {
-		console.log("Rerendered: ", Date.now());
 		const prevQuery = prevState.searchQuery;
 		const nextQuery = this.state.searchQuery;
 		if (prevQuery !== nextQuery) {
 			this.fetchPictures();
 		}
-		if (this.state.page > 2) {
+		if (this.state.shouldScroll === true) {
 			window.scrollTo({
 				top: document.documentElement.scrollHeight,
 				behavior: "smooth",
@@ -67,10 +66,16 @@ export default class App extends Component {
 
 	toggleModalImg = (largeImageUrl) => {
 		this.setState({ largeImageUrl: largeImageUrl });
+		this.setState({ shouldScroll: false });
 		this.setState({ showModal: !this.state.showModal });
 	};
 
-	handleModalImg = () => {};
+	handleButton = () => {
+		this.fetchPictures();
+		if (this.state.page > 1) {
+			this.setState({ shouldScroll: true });
+		}
+	};
 
 	render() {
 		const { pictures, isLoading, error, showModal, largeImageUrl } = this.state;
@@ -90,7 +95,7 @@ export default class App extends Component {
 					<Modal onClose={this.toggleModalImg} largeImageUrl={largeImageUrl} />
 				)}
 				{pictures.length > 0 && !isLoading && (
-					<Button type="button" onClick={this.fetchPictures}></Button>
+					<Button type="button" onClick={this.handleButton}></Button>
 				)}
 				{isLoading && <Loader />}
 			</AppStyled>
